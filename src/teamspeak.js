@@ -10,9 +10,10 @@ module.exports = (queryDetails, botsGroups) => {
 
             const ts = await TeamSpeak.connect(queryDetails);
 
-            const clients = (await ts.clientList({ client_type: 0 })).filter(c => !isBot(c));
-            tsData["online"] = clients.length;
+            const clients = (await ts.clientList({ client_type: 0 })).filter(c => !isBot(c)); // filter query and configured bots
             const serverInfo = await ts.serverInfo();
+
+            tsData["online"] = clients.length;
             tsData["platform"] = serverInfo.virtualserver_platform;
 
             await ts.quit();
@@ -20,7 +21,10 @@ module.exports = (queryDetails, botsGroups) => {
             return tsData;
         } catch (err) {
             console.log(err);
-            return { online: -1, platform: "invalid" };
+            return {
+                online: "?",
+                platform: "?"
+            };
         }
     }
 

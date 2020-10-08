@@ -42,6 +42,11 @@ cfg.colors = {
         angle: number
     }
 ]
+
+Text placeholders are:
+%votes%,
+%online%,
+%platform%
 */
 
 cfg.strings = [{
@@ -49,8 +54,8 @@ cfg.strings = [{
     color: "black",
     font: "primary",
     size: 18,
-    x: 100,
-    y: 100,
+    x: 100, // possible option "center"
+    y: 100, // possible option "center"
     angle: 0
 }];
 

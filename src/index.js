@@ -10,7 +10,7 @@ const fs = require("fs");
 const votes = require("./votes");
 const teamspeak = require("./teamspeak");
 
-const cfg = require("./config");
+const cfg = require("./config.default");
 
 /* ==============================
     Run simple checking tasks
@@ -70,8 +70,23 @@ async function generateBanner() {
             colors[colorName] = image.colorAllocate(rgb[0], rgb[1], rgb[2]);
         });
 
+        const replacePH = str => {
+            const { ts, votes } = data;
+
+            if (ts !== false) {
+                str = str.replace("%platform%", ts.platform);
+                str = str.replace("%online%", ts.online);
+            }
+
+            if (votes !== false) {
+                str = str.replace("%votes%", votes);
+            }
+
+            return str;
+        }
+
         cfg.strings.forEach(string => {
-            image.stringFT(colors[string.color], cfg.fonts[string.font], string.size, string.angle, string.x, string.y, string.text);
+            image.stringFT(colors[string.color], cfg.fonts[string.font], string.size, string.angle, string.x, string.y, replacePH(string.text));
         });
 
         // Export image
@@ -91,8 +106,8 @@ async function generateBanner() {
 async function getBannerData() {
     try {
         return {
-            tsData: (cfg.tsEnable) ? await tsHandler.getData() : false,
-            votes: (cfg.voteHandler) ? await voteHandler.getVotes() : false
+            ts: (cfg.tsEnable) ? await tsHandler.getData() : false,
+            votes: (cfg.voteEnable) ? await voteHandler.getVotes() : false
         };
     } catch (err) {
         console.log(err);
