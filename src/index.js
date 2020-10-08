@@ -9,7 +9,6 @@ const fs = require("fs");
 
 const votes = require("./votes");
 const teamspeak = require("./teamspeak");
-const topdata = require("./topdata");
 
 const cfg = require("./config");
 
@@ -25,9 +24,6 @@ try {
         console.log("Could not create output directory: " + cfg.bannerOutputFolder);
     }
 }
-// Check if databse file exists
-if (cfg.rankEenable && fs.existsSync(cfg.dbFile) == false)
-    throw new Error("Could not find sqlite file in directory: " + cfg.dbFile);
 
 /* ==============================
     Load handlers
@@ -35,7 +31,6 @@ if (cfg.rankEenable && fs.existsSync(cfg.dbFile) == false)
 
 const tsHandler = teamspeak(cfg.queryDetails, cfg.botsGroups);
 const voteHandler = votes(cfg.voteAPIkey);
-const topDataHandler = topdata(cfg.dbFile, cfg.ignoreUIDs, cfg.topCount);
 
 /* ==============================
     Banner request handling
@@ -97,8 +92,7 @@ async function getBannerData() {
     try {
         return {
             tsData: (cfg.tsEnable) ? await tsHandler.getData() : false,
-            votes: (cfg.voteHandler) ? await voteHandler.getVotes() : false,
-            topData: (cfg.rankEnable) ? await topDataHandler.getData() : false,
+            votes: (cfg.voteHandler) ? await voteHandler.getVotes() : false
         };
     } catch (err) {
         console.log(err);
