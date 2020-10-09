@@ -46,7 +46,9 @@ cfg.colors = {
 Text placeholders are:
 %votes%,
 %online%,
-%platform%
+%platform%,
+%time%,
+%date%
 */
 
 cfg.strings = [{

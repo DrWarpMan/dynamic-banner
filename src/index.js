@@ -82,6 +82,10 @@ async function generateBanner() {
                 str = str.replace("%votes%", votes);
             }
 
+            // Other simple replacements
+            str = str.replace("%time%", timeString());
+            str = str.replace("%date%", dateString());
+
             return str;
         }
 
@@ -132,15 +136,6 @@ function centerPosX(image, color, font, fSize, angle, y, text) {
     const bbox = image.stringFTBBox(color, font, fSize, angle, 0 /* x = 0 */ , y, text); // returns [xll, yll, xlr, ylr, xur, yur, xul, yul]
     const width = bbox[4];
     return Math.floor((image.width - width) / 2);
-}
-
-function getDaysOfExistence() {
-    const dNow = Date.now();
-    const dStart = 1461250680000; // Date of the start of the project
-    const difference = dNow - dStart;
-    const oneDay = 24 * 60 * 60 * 1000;
-    const days = Math.floor(difference / oneDay);
-    return days.toString();
 }
 
 
