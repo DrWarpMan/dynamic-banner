@@ -150,4 +150,4 @@ function centerPos(pos = "x", image, color, font, fSize, angle, x, y, text) {
 /* ==============================
     LISTEN
 ============================== */
-app.listen(cfg.appPort, "localhost");
+app.listen(cfg.appPort, cfg.host);

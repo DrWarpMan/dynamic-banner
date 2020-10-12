@@ -11,6 +11,7 @@ const path = require("path");
 const cfg = {};
 
 cfg.appPort = 4444;
+cfg.host = "localhost";
 
 /* ==============================
     Banner
