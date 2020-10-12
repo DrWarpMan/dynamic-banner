@@ -90,7 +90,14 @@ async function generateBanner() {
         }
 
         cfg.strings.forEach(string => {
-            image.stringFT(colors[string.color], cfg.fonts[string.font], string.size, string.angle, string.x, string.y, replacePH(string.text));
+            let params = [colors[string.color], cfg.fonts[string.font], string.size, string.angle, string.x, string.y, replacePH(string.text)];
+
+            if (params[4] === "center") // string.x
+                params[4] = centerPos("x", image, ...params);
+            if (params[5] === "center") // string.y
+                params[5] = centerPos("y", image, ...params);
+
+            image.stringFT(...params);
         });
 
         // Export image
@@ -132,10 +139,11 @@ function dateString() {
     return `${day < 10 ? "0" : ""}${day}/${month < 10 ? "0" : ""}${month}`;
 }
 
-function centerPosX(image, color, font, fSize, angle, y, text) {
-    const bbox = image.stringFTBBox(color, font, fSize, angle, 0 /* x = 0 */ , y, text); // returns [xll, yll, xlr, ylr, xur, yur, xul, yul]
-    const width = bbox[4];
-    return Math.floor((image.width - width) / 2);
+// https://y-a-v-a.github.io/node-gd/ 
+function centerPos(pos = "x", image, color, font, fSize, angle, x, y, text) {
+    // ignore x,y
+    const bbox = image.stringFTBBox(color, font, fSize, angle, 0, 0, text);
+    return Math.floor((image[(pos === "x") ? "width" : "height"] - ((pos === "x") ? bbox[4] : bbox[5])) / 2);
 }
 
 
