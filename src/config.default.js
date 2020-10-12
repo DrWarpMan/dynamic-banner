@@ -56,8 +56,8 @@ cfg.strings = [{
     color: "black",
     font: "primary",
     size: 18,
-    x: 100, // possible option "center"
-    y: 100, // possible option "center"
+    x: 100, // possible value "center"
+    y: 100, // possible value "center"
     angle: 0
 }];
 
@@ -65,14 +65,14 @@ cfg.strings = [{
     Vote API key (https://teamspeak-servers.org/)
 ============================== */
 
-cfg.voteEnable = true;
+cfg.voteEnable = false;
 cfg.voteAPIkey = "";
 
 /* ==============================
     TeamSpeak
 ============================== */
 
-cfg.tsEnable = true;
+cfg.tsEnable = false;
 
 cfg.botsGroups = [0, 0, 0];
 cfg.queryDetails = {
