@@ -135,8 +135,9 @@ function dateString() {
     const dNow = new Date();
     const day = dNow.getDate();
     const month = dNow.getMonth() + 1;
+    const month = dNow.getFullYear();
 
-    return `${day < 10 ? "0" : ""}${day}/${month < 10 ? "0" : ""}${month}`;
+    return `${day < 10 ? "0" : ""}${day}.${month < 10 ? "0" : ""}${month}.${year}`;
 }
 
 // https://y-a-v-a.github.io/node-gd/ 
