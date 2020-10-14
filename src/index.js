@@ -76,6 +76,7 @@ async function generateBanner() {
             if (ts !== false) {
                 str = str.replace("%platform%", ts.platform);
                 str = str.replace("%online%", ts.online);
+                str = str.replace("%max%", ts.max);
             }
 
             if (votes !== false) {

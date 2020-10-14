@@ -14,6 +14,7 @@ module.exports = (queryDetails, botsGroups) => {
             const serverInfo = await ts.serverInfo();
 
             tsData["online"] = clients.length;
+            tsData["max"] = serverInfo.virtualserver_maxclients;
             tsData["platform"] = serverInfo.virtualserver_platform;
 
             await ts.quit();
