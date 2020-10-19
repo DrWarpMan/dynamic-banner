@@ -22,10 +22,7 @@ module.exports = (queryDetails, botsGroups) => {
             return tsData;
         } catch (err) {
             console.log(err);
-            return {
-                online: "?",
-                platform: "?"
-            };
+            return false;
         }
     }
 

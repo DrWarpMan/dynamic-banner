@@ -11,7 +11,7 @@ module.exports = (voteAPIkey) => {
             return voteData.votes;
         } catch (err) {
             console.log(err);
-            return "?";
+            return false;
         }
     }
 
