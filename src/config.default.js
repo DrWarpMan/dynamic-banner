@@ -17,11 +17,11 @@ cfg.host = "localhost";
     Banner
 ============================== */
 
-cfg.bannerInterval = 30;
-cfg.bannerPath = "./images/original.png";
-cfg.bannerOutputFolder = "../public";
-cfg.bannerOutputFile = "banner.png";
-cfg.fontsFolder = "./fonts";
+cfg.bannerInterval = 30; // how often will data be refreshed
+cfg.bannerPath = "./images/original.png"; // banner image path
+cfg.bannerOutputFolder = "../public"; // where to output the image
+cfg.bannerOutputFile = "banner.png"; // anme of the output image
+cfg.fontsFolder = "./fonts"; // fonts foler
 cfg.fonts = {
     "primary": path.resolve(__dirname, cfg.fontsFolder, "Ubuntu-B.ttf"),
     "secondary": path.resolve(__dirname, cfg.fontsFolder, "Ubuntu-B.ttf")
@@ -32,34 +32,19 @@ cfg.colors = {
     "white": [255, 255, 255]
 }
 
-/* cfg.strings = [
-    {
-        text: "sample text",
-        color: "black",
-        font: "primary",
-        size: number,
-        x: number,
-        y: number,
-        angle: number
-    }
-]
-
-Text placeholders are:
-%votes%,
-%online%,
-%max%,
-%platform%,
-%time%, // hmm
-%date%, // hmm
+/*
+Parameters:
+- text, color, font, size, x, y, angle (x, y can also be replaced with "center")
+Available placeholders:
+- %platform%, %online%, %max%, %votes%, %time%, %date%
 */
-
 cfg.strings = [{
     text: "test",
     color: "black",
     font: "primary",
     size: 18,
-    x: 100, // possible value "center"
-    y: 100, // possible value "center"
+    x: 100, // or "center" 
+    y: 100, // or "center"
     angle: 0
 }];
 
@@ -68,7 +53,7 @@ cfg.strings = [{
 ============================== */
 
 cfg.voteEnable = false;
-cfg.voteAPIkey = "";
+cfg.voteAPIkey = ""; // can be retrieved at their website
 
 /* ==============================
     TeamSpeak
@@ -76,7 +61,10 @@ cfg.voteAPIkey = "";
 
 cfg.tsEnable = false;
 
+// if you want to exclude bots or others that have groups defined here
 cfg.botsGroups = [0, 0, 0];
+
+// query connection credentials
 cfg.queryDetails = {
     host: "localhost",
     protocol: "raw",

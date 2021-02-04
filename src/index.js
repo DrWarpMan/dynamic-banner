@@ -2,6 +2,8 @@
     Modules
 ============================== */
 
+const cfg = require("./config.default");
+
 const express = require("express");
 const gd = require("node-gd");
 const path = require("path");
@@ -9,8 +11,6 @@ const fs = require("fs");
 
 const votes = require("./votes");
 const teamspeak = require("./teamspeak");
-
-const cfg = require("./config.default");
 
 /* ==============================
     Run simple checking tasks
