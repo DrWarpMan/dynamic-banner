@@ -59,21 +59,18 @@ cfg.voteAPIkey = ""; // can be retrieved at their website
     TeamSpeak
 ============================== */
 
-cfg.tsEnable = false;
+cfg.tsEnable = true;
 
-// if you want to exclude bots or others that have groups defined here
-cfg.botsGroups = [0, 0, 0];
-
-// query connection credentials
 cfg.queryDetails = {
-    host: "localhost",
-    protocol: "raw",
-    queryport: 10011,
-    serverport: 9987,
-    username: "serveradmin",
-    password: "",
-    nickname: "Banner"
-};
+    qPort: "9987", // server port
+    qURL() { return `http://domain.tld/byport/${this.qPort}/` }, // api url
+    qKey: "queryapikey", // api key for query
+    qBotsUIDs: [ // list of bots UIDs
+        "botuid1",
+        "botuid2"
+    ],
+    qBotsGroups: ["botgroup1", "botgroup2"]
+}
 
 /* ==============================
     EXPORT CONFIGURATION

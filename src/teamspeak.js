@@ -1,23 +1,45 @@
 /* ==============================
     TeamSpeak
 ============================== */
-const { TeamSpeak } = require("ts3-nodejs-library");
+const fetch = require("node-fetch");
 
-module.exports = (queryDetails, botsGroups) => {
+module.exports = queryDetails => {
     async function getData() {
+        const requestOptions = {
+            method: `GET`,
+            headers: { "x-api-key": queryDetails.qKey }
+        };
+
+        const commands = ["clientlist?-uid&-groups", "serverinfo"];
+
         try {
-            let tsData = {};
+            const tsData = {};
 
-            const ts = await TeamSpeak.connect(queryDetails);
+            for (const command of commands) {
+                const response = await fetch(queryDetails.qURL() + command, requestOptions);
+                const result = await response.json();
 
-            const clients = (await ts.clientList({ client_type: 0 })).filter(c => !isBot(c)); // filter query and configured bots
-            const serverInfo = await ts.serverInfo();
+                switch (command) {
+                    case "clientlist?-uid&-groups":
+                        const clients = result.body;
+                        const online = clients.filter(client => !isBot(client));
 
-            tsData["online"] = clients.length;
-            tsData["max"] = serverInfo.virtualserver_maxclients;
-            tsData["platform"] = serverInfo.virtualserver_platform;
+                        tsData["online"] = online.length;
 
-            await ts.quit();
+                        break;
+                    case "serverinfo":
+                        const info = result.body;
+                        const max = info[0]["virtualserver_maxclients"];
+                        const platform = info[0]["virtualserver_platform"];
+
+                        tsData["max"] = max;
+                        tsData["platform"] = platform;
+
+                        break;
+                    default:
+                        throw new Error("Invalid command!");
+                }
+            }
 
             return tsData;
         } catch (err) {
@@ -27,7 +49,9 @@ module.exports = (queryDetails, botsGroups) => {
     }
 
     function isBot(client) {
-        return client.servergroups.some(gID => botsGroups.includes(gID));
+        return client["client_servergroups"].split(",").some(gID => (queryDetails.qBotsGroups || []).includes(gID)) ||
+            (queryDetails.qBotsUIDs || []).includes(client["client_unique_identifier"]) ||
+            client["client_type"] === "1";
     }
 
     return {
