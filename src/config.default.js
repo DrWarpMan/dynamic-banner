@@ -59,7 +59,7 @@ cfg.voteAPIkey = ""; // can be retrieved at their website
     TeamSpeak
 ============================== */
 
-cfg.tsEnable = true;
+cfg.tsEnable = false;
 
 cfg.queryDetails = {
     qPort: "9987", // server port
