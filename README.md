@@ -27,6 +27,6 @@ node .
 Configuration
 -
 Everything can be configured within the config.default.js file,
-also every needed documenation about the settings can be find inside.
+also the whole documentation about the settings can be find inside.
 
 
