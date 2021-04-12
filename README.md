@@ -16,7 +16,7 @@ Download
 -
 Dependencies (for Debian/Ubuntu):
 ```bash
-sudo apt install libgd-dev build-essentials
+sudo apt install libgd-dev build-essential
 ```
 Clone the repository:
 ```bash
