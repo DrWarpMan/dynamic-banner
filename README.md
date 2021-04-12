@@ -17,25 +17,24 @@ Download
 ```bash
 git clone https://github.com/DrWarpMan/dynamic-banner.git
 ```
-
 Take a look here https://www.npmjs.com/package/node-gd,
 to install node-gd library properly.
 E.g.: Debian / Ubuntu users should do:
 ```bash
 sudo apt install libgd-dev
 ```
-then install the packages via
+then install the packages:
 ```bash
 npm install
 ```
 
 Configure
 -
+Copy the default config:
 ```bash
 cp config.default.js config.js
 ```
-and edit the config afterwards to your needs
-
+and edit the config afterwards to your needs.
 
 Run
 -
@@ -50,5 +49,3 @@ node .
 Configuration
 -
 TBA
-
-
