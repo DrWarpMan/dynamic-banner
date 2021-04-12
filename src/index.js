@@ -6,7 +6,6 @@ const cfg = require("../config");
 
 const express = require("express");
 const gd = require("node-gd");
-const path = require("path");
 const fs = require("fs");
 
 const votes = require("./votes");
@@ -18,9 +17,9 @@ const teamspeak = require("./teamspeak");
 
 // Create banner output folder
 try {
-    fs.mkdirSync(path.resolve(__dirname, cfg.bannerOutputFolder));
+    fs.mkdirSync(cfg.bannerOutputFolder);
 } catch (err) {
-    if (err.code != "EEXIST") {
+    if (err.code !== "EEXIST") {
         console.log("Could not create output directory: " + cfg.bannerOutputFolder);
     }
 }
@@ -39,7 +38,7 @@ const voteHandler = votes(cfg.voteAPIkey);
 const app = express();
 
 app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, path.join(cfg.bannerOutputFolder, cfg.bannerOutputFile)), err => {
+    res.sendFile(bannerOutputFile, err => {
         if (err) {
             console.log(err);
             res.end("FATAL ERROR: Contact the webmaster!");
@@ -57,7 +56,7 @@ setInterval(generateBanner, (cfg.bannerInterval || 60) * 1000);
 async function generateBanner() {
     try {
         // Open image
-        const image = await gd.openFile(path.resolve(__dirname, cfg.bannerPath));
+        const image = await gd.openFile(cfg.bannerPath);
 
         const data = await getBannerData();
 
@@ -90,19 +89,19 @@ async function generateBanner() {
             return str;
         }
 
-        cfg.strings.forEach(string => {
-            let params = [colors[string.color], cfg.fonts[string.font], string.size, string.angle, string.x, string.y, replacePH(string.text)];
+        cfg.strings.forEach(({ color, font, size, angle, x, y, text }) => {
+            let params = [colors[color], cfg.fonts[font], size, angle, x, y, replacePH(text)];
 
-            if (params[4] === "center") // string.x
+            if (params[4] === "center") // x
                 params[4] = centerPos("x", image, ...params);
-            if (params[5] === "center") // string.y
+            if (params[5] === "center") // y
                 params[5] = centerPos("y", image, ...params);
 
             image.stringFT(...params);
         });
 
         // Export image
-        await image.savePng(path.resolve(__dirname, path.join(cfg.bannerOutputFolder, cfg.bannerOutputFile)), 0);
+        await image.savePng(cfg.bannerOutputFile, 0);
 
         image.destroy();
         return;
