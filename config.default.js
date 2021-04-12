@@ -23,7 +23,7 @@ cfg.bannerOutputFolder = path.resolve("./public"); // where to output the image
 cfg.bannerOutputFile = path.join(cfg.bannerOutputFolder, "banner.png"); // name of the output image
 cfg.fontsFolder = path.resolve("./fonts"); // fonts foler
 cfg.fonts = {
-    "primary": path.join(fontsFolder, "Ubuntu-B.ttf"),
+    "primary": path.join(cfg.fontsFolder, "Ubuntu-B.ttf"),
     "secondary": path.join(cfg.fontsFolder, "Ubuntu-B.ttf")
 }
 cfg.colors = {
