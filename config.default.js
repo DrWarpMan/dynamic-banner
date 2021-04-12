@@ -18,13 +18,13 @@ cfg.host = "localhost";
 ============================== */
 
 cfg.bannerInterval = 30; // how often will data be refreshed
-cfg.bannerPath = "./images/original.png"; // banner image path
-cfg.bannerOutputFolder = "../public"; // where to output the image
-cfg.bannerOutputFile = "banner.png"; // anme of the output image
-cfg.fontsFolder = "./fonts"; // fonts foler
+cfg.bannerPath = path.resolve("./images/original.png"); // banner image path
+cfg.bannerOutputFolder = path.resolve("./public"); // where to output the image
+cfg.bannerOutputFile = path.join(cfg.bannerOutputFolder, "banner.png"); // name of the output image
+cfg.fontsFolder = path.resolve("./fonts"); // fonts foler
 cfg.fonts = {
-    "primary": path.resolve(__dirname, cfg.fontsFolder, "Ubuntu-B.ttf"),
-    "secondary": path.resolve(__dirname, cfg.fontsFolder, "Ubuntu-B.ttf")
+    "primary": path.join(fontsFolder, "Ubuntu-B.ttf"),
+    "secondary": path.join(cfg.fontsFolder, "Ubuntu-B.ttf")
 }
 cfg.colors = {
     // RGB format
@@ -34,7 +34,7 @@ cfg.colors = {
 
 /*
 Parameters:
-- text, color, font, size, x, y, angle (x, y can also be replaced with "center")
+- text, color, font, size, x, y, angle (x, y can also be replaced with a string "center")
 Available placeholders:
 - %platform%, %online%, %max%, %votes%, %time%, %date%
 */
