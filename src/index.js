@@ -2,7 +2,7 @@
     Modules
 ============================== */
 
-const cfg = require("./config.default");
+const cfg = require("../config");
 
 const express = require("express");
 const gd = require("node-gd");

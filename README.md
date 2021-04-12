@@ -18,15 +18,26 @@ Download
 git clone https://github.com/DrWarpMan/dynamic-banner.git
 ```
 
+Configure
+-
+```bash
+cp config.default.js config.js
+```
+and edit the config afterwards to your needs
+
+
 Run
 -
+```bash
+npm start
+```
+or
 ```bash
 node .
 ```
 
 Configuration
 -
-Everything can be configured within the config.default.js file,
-also the whole documentation about the settings can be find inside.
+TBA
 
 
