@@ -141,7 +141,6 @@ function dateString() {
     return `${day < 10 ? "0" : ""}${day}.${month < 10 ? "0" : ""}${month}.${year}`;
 }
 
-// https://y-a-v-a.github.io/node-gd/ 
 function centerPos(pos = "x", image, color, font, fSize, angle, x, y, text) {
     // ignore x,y
     const bbox = image.stringFTBBox(color, font, fSize, angle, 0, 0, text);
