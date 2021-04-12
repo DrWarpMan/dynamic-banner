@@ -20,16 +20,14 @@ git clone https://github.com/DrWarpMan/dynamic-banner.git
 
 Take a look here https://www.npmjs.com/package/node-gd,
 to install node-gd library properly.
-
-E.g.: Debian / Ubuntu users:
+E.g.: Debian / Ubuntu users should do:
 ```bash
 sudo apt install libgd-dev
 ```
-then install packages
+then install the packages via
 ```bash
 npm install
 ```
-
 
 Configure
 -
