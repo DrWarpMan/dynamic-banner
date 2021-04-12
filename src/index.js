@@ -19,9 +19,8 @@ const teamspeak = require("./teamspeak");
 try {
     fs.mkdirSync(cfg.bannerOutputFolder);
 } catch (err) {
-    if (err.code !== "EEXIST") {
+    if (err.code !== "EEXIST")
         console.log("Could not create output directory: " + cfg.bannerOutputFolder);
-    }
 }
 
 /* ==============================
@@ -38,7 +37,7 @@ const voteHandler = votes(cfg.voteAPIkey);
 const app = express();
 
 app.get("/", (req, res) => {
-    res.sendFile(bannerOutputFile, err => {
+    res.sendFile(cfg.bannerOutputFile, err => {
         if (err) {
             console.log(err);
             res.end("FATAL ERROR: Contact the webmaster!");
