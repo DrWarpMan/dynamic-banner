@@ -4,19 +4,32 @@ Dynamic banner
 Information
 -
 Dynamic banner created mainly for TeamSpeak servers,
-to show specific data about the server on a banner,
-which are constantly being updated, hence the name "dynamic".
+to show various data about the server on a banner.
+This data will be dynamically updated, hence the name.
 
 Including:
-- Basic data (like a simple text or current time & date)
-- TS3 server data (like online users, etc.)
-- Votes for the server (API: https://teamspeak-servers.org)
+- Basic data - custom text, time, date
+- TeamSpeak data - online clients, max. clients
+- Server votes - (API: https://teamspeak-servers.org)
 
 Download
 -
 ```bash
 git clone https://github.com/DrWarpMan/dynamic-banner.git
 ```
+
+Take a look here https://www.npmjs.com/package/node-gd,
+to install node-gd library properly.
+
+E.g.: Debian / Ubuntu users:
+```bash
+sudo apt install libgd-dev
+```
+then install packages
+```bash
+npm install
+```
+
 
 Configure
 -
