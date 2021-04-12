@@ -14,14 +14,13 @@ Including:
 
 Download
 -
+Dependencies (for Debian/Ubuntu):
+```bash
+sudo apt install libgd-dev build-essentials
+```
+Clone the repository:
 ```bash
 git clone https://github.com/DrWarpMan/dynamic-banner.git
-```
-Take a look here https://www.npmjs.com/package/node-gd,
-to install node-gd library properly.
-E.g.: Debian / Ubuntu users should do:
-```bash
-sudo apt install libgd-dev
 ```
 then install the packages:
 ```bash
