@@ -12,7 +12,7 @@ const votes = require("./votes");
 const teamspeak = require("./teamspeak");
 
 /* ==============================
-    Run simple checking tasks
+    Run simple checking task(s)
 ============================== */
 
 // Create banner output folder

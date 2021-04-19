@@ -1,5 +1,5 @@
 # dynamic-banner
-Dynamic banner
+Dynamic banner for TeamSpeak
 
 Information
 -
@@ -18,7 +18,7 @@ Dependencies:
 ```bash
 sudo apt install libgd-dev build-essential
 ```
-(this is for Debian/Ubuntu, for other platforms, read here - https://www.npmjs.com/package/node-gd)
+(this is for Debian/Ubuntu, for other platforms read here - https://www.npmjs.com/package/node-gd)
 
 Clone the repository:
 ```bash
@@ -36,7 +36,7 @@ Copy the default config:
 ```bash
 cp config.default.js config.js
 ```
-and edit the config afterwards to your needs.
+and edit it to your needs afterwards.
 
 Run
 -
@@ -47,7 +47,7 @@ or
 ```bash
 cd dynamic-banner && node .
 ```
-or you can run the app via PM2 in the background.
+you can / will need to run the app via PM2 in the background.
 
 Configuration
 -

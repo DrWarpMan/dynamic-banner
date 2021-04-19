@@ -23,11 +23,9 @@ cfg.bannerOutputFolder = path.resolve("./public"); // where to output the image
 cfg.bannerOutputFile = path.join(cfg.bannerOutputFolder, "banner.png"); // name of the output image
 cfg.fontsFolder = path.resolve("./fonts"); // fonts foler
 cfg.fonts = {
-    "primary": path.join(cfg.fontsFolder, "Ubuntu-B.ttf"),
-    "secondary": path.join(cfg.fontsFolder, "Ubuntu-B.ttf")
+    "customname": path.join(cfg.fontsFolder, "Ubuntu-B.ttf")
 }
-cfg.colors = {
-    // RGB format
+cfg.colors = { // RGB
     "black": [0, 0, 0],
     "white": [255, 255, 255]
 }
@@ -35,25 +33,62 @@ cfg.colors = {
 /*
 Parameters:
 - text, color, font, size, x, y, angle (x, y can also be replaced with a string "center")
-Available placeholders:
+Currently available placeholders are:
 - %platform%, %online%, %max%, %votes%, %time%, %date%
 */
 cfg.strings = [{
-    text: "test",
-    color: "black",
-    font: "primary",
-    size: 18,
-    x: 100, // or "center" 
-    y: 100, // or "center"
-    angle: 0
-}];
+        text: "Welcome to the community!",
+        color: "white",
+        font: "customname",
+        size: 18,
+        x: "center",
+        y: 177, // or "center"
+        angle: 0
+    },
+    {
+        text: "%date%",
+        color: "white",
+        font: "customname",
+        size: 18,
+        x: 214,
+        y: 248,
+        angle: 0
+    },
+    {
+        text: "%time%",
+        color: "white",
+        font: "customname",
+        size: 18,
+        x: 420,
+        y: 248,
+        angle: 0
+    },
+    {
+        text: "Empty..",
+        color: "white",
+        font: "customname",
+        size: 18,
+        x: 582,
+        y: 248,
+        angle: 0
+    },
+    {
+        text: "Empty..",
+        color: "white",
+        font: "customname",
+        size: 18,
+        x: 764,
+        y: 248,
+        angle: 0
+    }
+];
 
 /* ==============================
     Vote API key (https://teamspeak-servers.org/)
 ============================== */
 
 cfg.voteEnable = false;
-cfg.voteAPIkey = ""; // can be retrieved at their website
+cfg.voteAPIkey = "";
 
 /* ==============================
     TeamSpeak
@@ -62,14 +97,13 @@ cfg.voteAPIkey = ""; // can be retrieved at their website
 cfg.tsEnable = false;
 
 cfg.queryDetails = {
-    qPort: "9987", // server port
-    qURL() { return `http://domain.tld/byport/${this.qPort}/` }, // api url
-    qKey: "queryapikey", // api key for query
-    qBotsUIDs: [ // list of bots UIDs
+    qURL: "https://domain.tld/byport/9987/", // query api url with port
+    qKey: "queryapikey",
+    qBotsUIDs: [ // list of bots UIDs to ignore
         "botuid1",
         "botuid2"
     ],
-    qBotsGroups: ["botgroup1", "botgroup2"]
+    qBotsGroups: ["botgroup1", "botgroup2"] // list of bots group IDs to ignore
 }
 
 /* ==============================
