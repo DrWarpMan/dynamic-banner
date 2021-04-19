@@ -23,6 +23,7 @@ sudo apt install libgd-dev build-essential
 Clone the repository:
 ```bash
 git clone https://github.com/DrWarpMan/dynamic-banner.git
+cd dynamic-banner
 ```
 then install the packages:
 ```bash
@@ -44,8 +45,9 @@ npm start
 ```
 or
 ```bash
-node .
+cd dynamic-banner && node .
 ```
+or you can run the app via PM2 in the background.
 
 Configuration
 -
