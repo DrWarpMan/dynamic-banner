@@ -12,6 +12,12 @@ Including:
 - TeamSpeak data - online clients, max. clients
 - Server votes - (API: https://teamspeak-servers.org)
 
+Example
+-
+![alt text](https://github.com/DrWarpMan/dynamic-banner/blob/main/images/example.png?raw=true)
+
+Live demo of my own dynamic banner: https://banner.dark-gaming.eu/
+
 Download
 -
 Dependencies:
