@@ -16,7 +16,7 @@ module.exports = queryDetails => {
             const tsData = {};
 
             for (const command of commands) {
-                const response = await fetch(queryDetails.qURL() + command, requestOptions);
+                const response = await fetch(queryDetails.qURL + command, requestOptions);
                 const result = await response.json();
 
                 switch (command) {
